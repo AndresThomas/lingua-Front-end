@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
+  hide = true;
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
@@ -28,11 +29,10 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    console.log(this.form)
     const user = this.form.value.user;
     const password = this.form.value.password;
     if (user == 'thomas') {
-      this.router.navigate(['dashboard']);
+      this.fakeLoading();
     } else {
       this.error();
       this.form.reset();
@@ -50,8 +50,7 @@ export class LoginComponent implements OnInit {
   fakeLoading(){
     this.loading = true;
     setTimeout(() => {
-      this.loading=false;
-      //redirecting to dashboard
+      this.router.navigate(['dashboard']);
     }, 1500);
   }
 

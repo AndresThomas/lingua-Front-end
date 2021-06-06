@@ -1,0 +1,10 @@
+.body{
+    display:flex;
+    justify-content: center;
+    height: 80%;
+    align-items: center;
+    background-image: url('../../../assets/img/dashboard.jpg ');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}

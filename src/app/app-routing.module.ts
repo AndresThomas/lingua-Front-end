@@ -7,11 +7,11 @@ const routes: Routes = [
     path: '',component:LoginComponent
   },
   {
-    path:'**',redirectTo:'',pathMatch:'full'
-  },
-  {
     path:'dashboard',loadChildren:()=>import ('./components/dashboard/dashboard.module').then(x => x.DashboardModule)
   },
+  {
+    path:'**',redirectTo:'',pathMatch:'full'
+  }
 ];
 
 @NgModule({
