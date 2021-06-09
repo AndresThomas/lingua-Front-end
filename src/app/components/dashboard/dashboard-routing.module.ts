@@ -7,11 +7,8 @@ import { MyStudentsComponent } from './my-students/my-students.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent,
     children: [
-      {path:'',component:HomeComponent},
-      {path:'myStudents',component:MyStudentsComponent},
-      {path:'',component:HomeComponent},
-      {path:'',component:HomeComponent},
-      {path:'',component:HomeComponent},      
+      {path:'class',component:HomeComponent},//used for give class -> student
+      {path:'myStudents',component:MyStudentsComponent}, // admin students -> teacher
     ]
  },
   
