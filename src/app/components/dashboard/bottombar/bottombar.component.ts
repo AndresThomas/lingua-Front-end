@@ -11,7 +11,9 @@ export class BottombarComponent implements OnInit {
   positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
   position = new FormControl(this.positionOptions[0]);
   constructor() { }
-
+  goToLink(){
+    window.open('https://www.facebook.com/Linguazoneschool',"_blank")
+  }
   ngOnInit(): void {
   }
 

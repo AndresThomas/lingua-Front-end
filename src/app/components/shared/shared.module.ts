@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [],
   imports: [
@@ -29,8 +30,8 @@ import {MatSortModule} from '@angular/material/sort';
     HttpClientModule,
     MatTableModule,
     MatTooltipModule,
-    MatSortModule
-    
+    MatSortModule,
+    MatSelectModule  
     
   ],
   exports:[
@@ -45,7 +46,8 @@ import {MatSortModule} from '@angular/material/sort';
     HttpClientModule,
     MatTableModule,
     MatTooltipModule,
-    MatSortModule
+    MatSortModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }

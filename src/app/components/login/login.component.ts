@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { WebService } from 'src/app/services/web.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
-    private router :Router
+    private router: Router,
+    private request: WebService
 
-    ) {
+  ) {
     this.form = this.fb.group({
       user: ['', Validators.required],
       password: ['', Validators.required]
@@ -29,25 +31,29 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    const user = this.form.value.user;
+    const username = this.form.value.user;
     const password = this.form.value.password;
-    if (user == 'thomas') {
-      this.fakeLoading();
-    } else {
-      this.error();
-      this.form.reset();
-    }
+    this.request.postLogin({ username, password }).subscribe(
+      response => {
+        this.fakeLoading();
+      },
+      error => {
+        this.error();
+        this.form.reset();
+      }
+    )
+
   }
 
-  error(){
-    this._snackBar.open('Invalid user and password','',{
-      duration:5000,
-      horizontalPosition:'center',
+  error() {
+    this._snackBar.open('Invalid user and password', '', {
+      duration: 5000,
+      horizontalPosition: 'center',
       verticalPosition: 'bottom'
     });
   }
 
-  fakeLoading(){
+  fakeLoading() {
     this.loading = true;
     setTimeout(() => {
       this.router.navigate(['dashboard']);
