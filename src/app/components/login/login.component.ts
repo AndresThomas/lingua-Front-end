@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   hide = true;
+  rol: any;
+  
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
@@ -33,8 +35,11 @@ export class LoginComponent implements OnInit {
   login() {
     const username = this.form.value.user;
     const password = this.form.value.password;
+    
     this.request.postLogin({ username, password }).subscribe(
       response => {
+        this.rol = response
+        this.request.receiveRol(this.rol.rol)
         this.fakeLoading();
       },
       error => {

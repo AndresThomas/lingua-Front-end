@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {  HttpClient, HttpHeaders, HttpClientModule  } from '@angular/common/http';
+import {  HttpClient  } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,16 @@ export class WebService {
   books = '';
   classLink='';
   list = '';
-  
+  private messageSource= new BehaviorSubject('default');
+  currentMessage = this.messageSource.asObservable();
   constructor(
-    private http:HttpClient,
+    private http:HttpClient
   ) { }
 
   /**********************************************/
   postLogin(data: any) { return this.http.post(this.link, data); }
   postRegistro(data: any) { return this.http.post(this.link + 'register/', data); }
-
+  receiveRol(rol:string){this.messageSource.next(rol)}
 
 
 
