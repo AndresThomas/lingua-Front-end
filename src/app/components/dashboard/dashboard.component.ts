@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Subscription } from 'rxjs';
 import { WebService } from 'src/app/services/web.service';
 
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router :Router,
     private http : WebService,
+    private cookie: CookieService
   ) { }
 
   getInClass(){
@@ -39,7 +41,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.subscription = this.http.currentMessage.subscribe(message => this.message = message)
+    this.message = this.cookie.get('rol').toLowerCase();
+    console.log(this.message, 'im message')
+    //this.subscription = this.http.currentMessage.subscribe(message => this.message = message)
     console.log(this.message,' <-----');
     if(this.message == 'admin'){
       this.is_admin= true;

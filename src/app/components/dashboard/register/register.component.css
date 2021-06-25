@@ -3,7 +3,7 @@
     justify-content: center;
     height: 100%;
     align-items: center;
-    background-image: url('../../../assets/img/body.jpeg');
+    background-image: url('../../../../assets/img/body.jpeg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -20,9 +20,4 @@
 }
 .btn{
     height: 50px;
-}
-.spinner{
-    margin:0 auto;
-    margin-left: auto;
-    margin-right: auto;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { WebService } from 'src/app/services/web.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private request: WebService
+    private request: WebService,
+    private cookie : CookieService
 
   ) {
     this.form = this.fb.group({
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit {
       response => {
         this.rol = response
         this.request.receiveRol(this.rol.rol)
+        this.cookie.set('rol',this.rol.rol+'');
         this.fakeLoading();
       },
       error => {

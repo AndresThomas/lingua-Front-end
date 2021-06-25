@@ -19,7 +19,7 @@ export class WebService {
   ) { }
 
   /**********************************************/
-  postLogin(data: any) { return this.http.post(this.link, data); }
+  postLogin(data: any) { return this.http.post(this.link+'login/', data); }
   postRegistro(data: any) { return this.http.post(this.link + 'register/', data); }
   receiveRol(rol:string){this.messageSource.next(rol)}
 

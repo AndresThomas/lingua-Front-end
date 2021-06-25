@@ -7,12 +7,12 @@ import { DashboardComponent } from './dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MyStudentsComponent } from './my-students/my-students.component';
 import { BottombarComponent } from './bottombar/bottombar.component';
-import { RegisterComponent } from 'src/app/dashboard/register/register.component';
+import { RegisterComponent } from '../dashboard/register/register.component';
 
 
 @NgModule({
-  declarations: [DashboardComponent, NavbarComponent,
-     RegisterComponent,MyStudentsComponent, BottombarComponent],
+  declarations: [DashboardComponent, NavbarComponent,RegisterComponent,
+    MyStudentsComponent, BottombarComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

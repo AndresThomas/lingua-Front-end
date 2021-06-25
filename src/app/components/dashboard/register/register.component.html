@@ -1,7 +1,9 @@
 <div class="body">
+    <button mat-fab color="accent" (click)="home()" aria-label="Example icon button with a bookmark icon">
+        <mat-icon>home</mat-icon>
+      </button>
     <div class="login">
-        <mat-spinner color="accent" class="spinner" *ngIf="loading"></mat-spinner>
-
+        
         <form [formGroup]="form" *ngIf="!loading" (ngSubmit)="login()">
             <img src="../../../assets/img/a.png" width="50%">
             <mat-form-field class="ancho" appearance="outline" color="primary" style="color: white;">

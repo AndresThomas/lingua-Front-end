@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {FormControl} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { WebService } from 'src/app/services/web.service';
+import { WebService } from '../../../services/web.service';
 
 interface Animal {
   name: string;
@@ -47,6 +47,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  home(){
+    this.router.navigate(['dashboard']);
+  }
 
   login() {
 
@@ -57,28 +60,32 @@ export class RegisterComponent implements OnInit {
       username:this.form.value.username,
       password: this.form.value.password,
       email:this.form.value.email,
-      phone_number:'0000000000'
+      phone_number:'0000000000',
+      lista:"{data:example}"
     }
     console.log(user,' user')
     this.request.postRegistro(user).subscribe(
       myRequest =>{
-        if (true) {
-          console.log(myRequest);
-        } else {
-          this.error();
-          this.form.reset();
-        }
+        this.ok();
       },
       error=>{
-        console.log(error)
+        this.error(error.error.username);
       }
     )
     
     
   }
-
-  error(){
-    this._snackBar.open('Invalid user and password','',{
+  ok(){
+    this._snackBar.open('The user was created successfully','',{
+      duration:5000,
+      horizontalPosition:'center',
+      verticalPosition: 'bottom'
+    });
+  }
+  error(message:string){
+    if(message == '')
+      message = 'The user wasnt created';
+    this._snackBar.open(message,'',{
       duration:5000,
       horizontalPosition:'center',
       verticalPosition: 'bottom'
@@ -88,7 +95,7 @@ export class RegisterComponent implements OnInit {
   fakeLoading(){
     this.loading = true;
     setTimeout(() => {
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['register']);
     }, 1500);
   }
 
