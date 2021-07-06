@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {  HttpClient  } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import {  HttpClient, HttpParams  } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { User } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,6 @@ export class WebService {
   postRegistro(data: any) { return this.http.post(this.link + 'register/', data); }
   receiveRol(rol:string){this.messageSource.next(rol)}
 
-
-
-
   /**********************************************/
 
   getLink(){
@@ -39,4 +37,21 @@ export class WebService {
     return this.http.get(this.link);
   }
 
+  getUsers(rol:string) {
+    let params = new HttpParams();
+    params= params.append("rol",rol);
+    return this.http.get<User[]>(this.link+"register",{params:params})
+  }
+
+  getUser(id:any):Observable<User>{
+    return this.http.get<User>(this.link+"register/get/"+id+"/");
+  }
+
+  updateUser(user:User,id:number){
+    return this.http.put(this.link+"register/get/"+id+"/",user);
+  }
+
+  deleteUser(id:number){
+    return this.http.delete(this.link+"register/get/"+id+"/");
+  }
 }

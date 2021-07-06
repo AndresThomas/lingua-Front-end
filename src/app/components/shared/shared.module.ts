@@ -15,6 +15,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -31,7 +34,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatTooltipModule,
     MatSortModule,
-    MatSelectModule  
+    MatSelectModule,
+    MatDialogModule,
+    MatPaginatorModule
     
   ],
   exports:[
@@ -47,7 +52,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatTableModule,
     MatTooltipModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule { }

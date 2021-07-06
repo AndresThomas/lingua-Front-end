@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Menu } from 'src/app/interfaces/menu';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +9,25 @@ import { Menu } from 'src/app/interfaces/menu';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  menu: Menu[] = [];
-  
+
   constructor(
+    private cookie: CookieService,
+    private router: Router,
   ) { }
-  
+
   ngOnInit(): void {
+    this.validation();
+  }
+
+  validation() {
+    if (!this.cookie.check('username')) {
+      this.router.navigate(["/"]);
+    }
+  }
+  logout() {
+    this.cookie.deleteAll('/dashboard');
+    this.cookie.deleteAll('/');
+
   }
 
 }

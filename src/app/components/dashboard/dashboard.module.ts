@@ -5,14 +5,16 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MyStudentsComponent } from './my-students/my-students.component';
 import { BottombarComponent } from './bottombar/bottombar.component';
 import { RegisterComponent } from '../dashboard/register/register.component';
+import { ListDialogComponent } from './list-dialog/list-dialog.component';
+import { DetailDialogComponent } from './detail-dialog/detail-dialog.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 @NgModule({
   declarations: [DashboardComponent, NavbarComponent,RegisterComponent,
-    MyStudentsComponent, BottombarComponent],
+     BottombarComponent, ListDialogComponent, DetailDialogComponent, EditUserComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

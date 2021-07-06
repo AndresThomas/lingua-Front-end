@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Subscription } from 'rxjs';
 import { WebService } from 'src/app/services/web.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ListDialogComponent } from './list-dialog/list-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,18 +12,18 @@ import { WebService } from 'src/app/services/web.service';
 })
 export class DashboardComponent implements OnInit {
   url = '';
-  message ='';
-  subscription: Subscription | undefined;
+  message = '';
   is_admin = false;
-  is_teacher= false;
-  is_student= false;
+  is_teacher = false;
+  is_student = false;
   constructor(
-    private router :Router,
-    private http : WebService,
-    private cookie: CookieService
+    private router: Router,
+    private http: WebService,
+    private cookie: CookieService,
+    public matDialog: MatDialog,
   ) { }
 
-  getInClass(){
+  getInClass() {
     /*this.http.getLink().subscribe(
       (request) =>{
         window.open(request.toString(),"_blank");
@@ -31,28 +32,34 @@ export class DashboardComponent implements OnInit {
         console.log(error)
       }
     )*/
-    window.open(this.http.getLink(),"_blank");
+    window.open(this.http.getLink(), "_blank");
   }
-  getMyBooks(){}
-  getList(){}
+  getMyBooks() { }
+  getList() {
+    const dialogref = this.matDialog.open(ListDialogComponent,
+      {
+        width: '100%',
+        height: '90%',
+        data: { rol: this.cookie.get('rol').toLowerCase() }
+      }
+      )
+  }
 
-  addUser(){
-    
+  addUser() {
+
   }
 
   ngOnInit(): void {
     this.message = this.cookie.get('rol').toLowerCase();
-    console.log(this.message, 'im message')
-    //this.subscription = this.http.currentMessage.subscribe(message => this.message = message)
-    console.log(this.message,' <-----');
-    if(this.message == 'admin'){
-      this.is_admin= true;
+
+    if (this.message == 'admin') {
+      this.is_admin = true;
     }
-    if(this.message == 'teacher'){
-      this.is_teacher= true;
+    if (this.message == 'teacher') {
+      this.is_teacher = true;
     }
-    if(this.message == 'student'){
-      this.is_student= true;
+    if (this.message == 'student') {
+      this.is_student = true;
     }
   }
 

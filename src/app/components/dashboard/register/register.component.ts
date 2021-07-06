@@ -4,11 +4,9 @@ import {FormControl} from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { WebService } from '../../../services/web.service';
+import {Animal } from '../../../interfaces/Animal';
 
-interface Animal {
-  name: string;
-  sound: string;
-}
+
 
 @Component({
   selector: 'app-register',
@@ -20,8 +18,8 @@ export class RegisterComponent implements OnInit {
   animalControl = new FormControl('', Validators.required);
   selectFormControl = new FormControl('', Validators.required);
   animals: Animal[] = [
-    {name: 'Student', sound: 'Woof!'},
-    {name: 'Teacher', sound: 'Meow!'},
+    {name: 'Student'},
+    {name: 'Teacher'},
     
   ];
 
@@ -66,25 +64,17 @@ export class RegisterComponent implements OnInit {
     console.log(user,' user')
     this.request.postRegistro(user).subscribe(
       myRequest =>{
-        this.ok();
+        this.message('The user was created successfully');
+        this.form.reset();
       },
       error=>{
-        this.error(error.error.username);
+        this.message('The user wasnt created, ' +error.error.username);
       }
     )
     
     
   }
-  ok(){
-    this._snackBar.open('The user was created successfully','',{
-      duration:5000,
-      horizontalPosition:'center',
-      verticalPosition: 'bottom'
-    });
-  }
-  error(message:string){
-    if(message == '')
-      message = 'The user wasnt created';
+  message(message:string){
     this._snackBar.open(message,'',{
       duration:5000,
       horizontalPosition:'center',
