@@ -1,5 +1,6 @@
 <mat-label >Edit</mat-label>
-<div class="container" [formGroup]="form" >
+<div class="mega" [formGroup]="form" >
+<div class="container" >
     <mat-form-field class="ancho" appearance="outline" color="primary" >
         <mat-label >First name</mat-label>
         <input matInput formControlName="firstName" autocomplete="off" value="{{user.first_name}}"  >
@@ -49,7 +50,19 @@
     </mat-form-field>
 
     <br>
-    <button class="ancho btn" (click)="save(form.value)" mat-flat-button [disabled]="form.invalid" color="warn">Register</button>
+    
 </div>
-
-
+<div class="container2">
+    <mat-form-field class="ancho" appearance="outline" color="primary" >
+        <mat-label >Languages</mat-label>
+        <input matInput type='email' formControlName="languages" autocomplete="off">
+        <mat-icon matSuffix class="icon"></mat-icon>
+    </mat-form-field>
+    <mat-form-field class="ancho" appearance="outline" color="primary" >
+        <mat-label >Level</mat-label>
+        <input matInput type='email' formControlName="level" autocomplete="off">
+        <mat-icon matSuffix class="icon">mail</mat-icon>
+    </mat-form-field>
+</div>
+</div>
+<button class="btn" (click)="save(form.value)" mat-flat-button [disabled]="form.invalid" color="warn">Register</button>

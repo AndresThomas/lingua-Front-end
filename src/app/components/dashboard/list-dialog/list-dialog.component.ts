@@ -49,12 +49,11 @@ export class ListDialogComponent implements OnInit {
 
   }
   edit(id: number) {
-    console.log(typeof(id))
     this.http.getUser(id).subscribe(
       user =>{
         const dialogref = this.matDialog.open(EditUserComponent,
           {
-            width: '30%',
+            width: '70%',
             height: '100%',
             data: { id:id, user:user }
           });

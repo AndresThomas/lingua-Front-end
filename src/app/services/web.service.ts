@@ -31,7 +31,7 @@ export class WebService {
     return this.link;
   }
   getBooks(){
-    return this.http.get(this.books);
+    return this.http.get('https://drive.google.com/drive/folders/1Tn6vuO9v2mxejDiqp_zHDn4qbt7TbEc2');
   }
   getList(){
     return this.http.get(this.link);

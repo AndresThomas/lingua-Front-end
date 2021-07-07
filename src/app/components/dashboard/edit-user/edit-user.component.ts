@@ -35,6 +35,8 @@ export class EditUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public id: any,
   ) { 
     this.user = this.id.user;
+    
+
     this.form = this.fb.group({
       username: [this.user.username, Validators.required],
       password: [this.user.password, Validators.required],
@@ -44,8 +46,9 @@ export class EditUserComponent implements OnInit {
       phonenumber:[this.user.phone_number,Validators.compose(
         [Validators.maxLength(10),Validators.minLength(10),Validators.required,])],
       animalControl: ['', Validators.required],
+      level: [this.user.lista.levels, Validators.required],
+      languages: [this.user.lista.languages, Validators.required],
     })
-    console.log(this.user.rol)
     this.is_admin = this.cookie.get('rol') == 'admin';
   }
   
@@ -59,7 +62,6 @@ export class EditUserComponent implements OnInit {
   
   
   save(data:any){
-    
     let user = {
       first_name: data.firstName,
       last_name:data.lastName,
@@ -68,7 +70,7 @@ export class EditUserComponent implements OnInit {
       username: data.username,
       password:data.password,
       email: data.email,
-      lista: this.id.user.lista
+      lista: {'languages':data.languages,'levels':data.level}
     }
     this.request.updateUser(user,this.id.id).subscribe(
       result =>{

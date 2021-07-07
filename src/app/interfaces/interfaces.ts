@@ -6,5 +6,5 @@ export interface User{
     username: string,
     password: string,
     email: string,
-    lista: string
+    lista: any
 }

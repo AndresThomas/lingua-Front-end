@@ -34,7 +34,16 @@ export class DashboardComponent implements OnInit {
     )*/
     window.open(this.http.getLink(), "_blank");
   }
-  getMyBooks() { }
+  getMyBooks() {
+    this.http.getBooks().subscribe(
+      result=>{
+        console.log(result)
+      },
+      error=>{
+        console.log(error)
+      }
+    )
+   }
   getList() {
     const dialogref = this.matDialog.open(ListDialogComponent,
       {
