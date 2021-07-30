@@ -2,7 +2,7 @@
   "name": "lingua-zone",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild": "ng build --configuration production",
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
