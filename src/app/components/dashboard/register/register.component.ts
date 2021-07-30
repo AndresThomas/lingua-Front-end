@@ -18,8 +18,8 @@ export class RegisterComponent implements OnInit {
   animalControl = new FormControl('', Validators.required);
   selectFormControl = new FormControl('', Validators.required);
   animals: Animal[] = [
-    {name: 'Student'},
-    {name: 'Teacher'},
+    {name: 'student'},
+    {name: 'teacher'},
     
   ];
 
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
       password: this.form.value.password,
       email:this.form.value.email,
       phone_number:'0000000000',
-      lista:"{data:example}"
+      lista:"{language:example}"
     }
     console.log(user,' user')
     this.request.postRegistro(user).subscribe(

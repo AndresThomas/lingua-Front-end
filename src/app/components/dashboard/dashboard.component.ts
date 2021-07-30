@@ -4,6 +4,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { WebService } from 'src/app/services/web.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ListDialogComponent } from './list-dialog/list-dialog.component';
+import { TakeclassdialogComponent } from './takeclassdialog/takeclassdialog.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -24,34 +26,41 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   getInClass() {
-    /*this.http.getLink().subscribe(
-      (request) =>{
-        window.open(request.toString(),"_blank");
-      },
-      (error)=>{
-        console.log(error)
+    const dialogref = this.matDialog.open(
+      TakeclassdialogComponent,
+      {
+        width: '70%',
+        height:'90%',
+        data: {
+          rol: this.cookie.get('rol').toLowerCase(), user: this.cookie.get('username'),
+          token: this.cookie.get('csrftoken')
+        }
       }
-    )*/
-    window.open(this.http.getLink(), "_blank");
+
+    )
+    
   }
   getMyBooks() {
     this.http.getBooks().subscribe(
-      result=>{
+      result => {
         console.log(result)
       },
-      error=>{
+      error => {
         console.log(error)
       }
     )
-   }
+  }
   getList() {
     const dialogref = this.matDialog.open(ListDialogComponent,
       {
         width: '100%',
         height: '90%',
-        data: { rol: this.cookie.get('rol').toLowerCase() }
+        data: {
+          rol: this.cookie.get('rol').toLowerCase(), user: this.cookie.get('username'),
+          token: this.cookie.get('csrftoken')
+        }
       }
-      )
+    )
   }
 
   addUser() {

@@ -72,7 +72,8 @@ export class ListDialogComponent implements OnInit {
     else
       this.description = 'Students';
     var aux: User[] = [];
-    this.http.getUsers(this.data.rol).subscribe(
+    
+    this.http.getUsers(this.data.rol,this.data.user).subscribe(
       result => {
         for (let index = 0; index < result.length; index++) {
           if(result[index].username != this.cookie.get('username')){
@@ -83,6 +84,8 @@ export class ListDialogComponent implements OnInit {
         this.students_list = aux;
         this.dataSource = new MatTableDataSource(this.students_list);
         this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
       },
       error => {
         console.log(error)
@@ -90,14 +93,8 @@ export class ListDialogComponent implements OnInit {
     );
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
   ngOnInit(): void {
-    this.loadUsers();    
-    
+    this.loadUsers();     
   }
 
   applyFilter(event: Event) {

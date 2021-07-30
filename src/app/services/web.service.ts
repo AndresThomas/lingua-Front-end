@@ -37,9 +37,10 @@ export class WebService {
     return this.http.get(this.link);
   }
 
-  getUsers(rol:string) {
+  getUsers(rol:string,user:string) {
     let params = new HttpParams();
     params= params.append("rol",rol);
+    params= params.append("user",user);
     return this.http.get<User[]>(this.link+"register",{params:params})
   }
 

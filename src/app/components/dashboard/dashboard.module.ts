@@ -10,11 +10,13 @@ import { RegisterComponent } from '../dashboard/register/register.component';
 import { ListDialogComponent } from './list-dialog/list-dialog.component';
 import { DetailDialogComponent } from './detail-dialog/detail-dialog.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { TakeclassdialogComponent } from './takeclassdialog/takeclassdialog.component';
+import { ClasschooserComponent } from './classchooser/classchooser.component';
 
 
 @NgModule({
   declarations: [DashboardComponent, NavbarComponent,RegisterComponent,
-     BottombarComponent, ListDialogComponent, DetailDialogComponent, EditUserComponent],
+     BottombarComponent, ListDialogComponent, DetailDialogComponent, EditUserComponent, TakeclassdialogComponent, ClasschooserComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

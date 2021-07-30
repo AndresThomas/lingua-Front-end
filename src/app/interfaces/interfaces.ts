@@ -8,3 +8,9 @@ export interface User{
     email: string,
     lista: any
 }
+
+export interface Language{
+    language : string,
+    teacher : string,
+    level:string
+}
